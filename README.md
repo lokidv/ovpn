@@ -21,7 +21,7 @@ sudo apt install nodejs
 
 sudo npm install pm2 -g
 
-git clone https://gitlab.com/loki_dv/ovpn.git
+git clone https://github.com/lokidv/ovpn.git
 mv ovpn/ /home
 cd /home
 mkdir bvpn
