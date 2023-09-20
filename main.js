@@ -27,9 +27,10 @@ async function startHttpServer() {
     });
 
     site_server.on('request', async function (req, res) {
-
         logger.info("*** start request", req.method);
-
+  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         try {
 
             let U = eURL.parse(req.url, true);
@@ -65,7 +66,6 @@ async function startHttpServer() {
 }
 
 async function addVpn(req, res, query){
-
 
 
   let file_is_exist = await  fs.existsSync("/root/"+query.publicKey+".ovpn")
@@ -200,17 +200,3 @@ async function listUser(req, res, query){
   await res.write(_listuser)
 }
  
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
