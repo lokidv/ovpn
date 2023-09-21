@@ -29,8 +29,7 @@ async function startHttpServer() {
     site_server.on('request', async function (req, res) {
         logger.info("*** start request", req.method);
   res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+   
         try {
 
             let U = eURL.parse(req.url, true);
