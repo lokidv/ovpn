@@ -67,6 +67,18 @@ async function startHttpServer() {
 async function addVpn(req, res, query){
 
 
+            const date = new Date();
+    const formattedDate = `${date.getFullYear()}_${(date.getMonth() + 1).toString().padStart(2, '0')}_${date.getDate().toString().padStart(2, '0')}-${date.getHours().toString().padStart(2, '0')}_${date.getMinutes().toString().padStart(2, '0')}_${date.getSeconds().toString().padStart(2, '0')}`;
+
+    const backupFileName = `/root/openvpn_backup_${formattedDate}.tar.gz`;
+
+    await shell.exec(`tar czvf ${backupFileName} /etc/openvpn/ /etc/openvpn/easy-rsa/`);
+    logger.info(`Backup created: ${backupFileName}`);
+
+
+
+
+
   let file_is_exist = await  fs.existsSync("/root/"+query.publicKey+".ovpn")
       logger.info('1',file_is_exist)
 
@@ -198,4 +210,3 @@ async function listUser(req, res, query){
   logger.info('Console response:', _listuser);
   await res.write(_listuser)
 }
- 
