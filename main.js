@@ -67,15 +67,6 @@ async function startHttpServer() {
 async function addVpn(req, res, query){
 
 
-            const date = new Date();
-    const formattedDate = `${date.getFullYear()}_${(date.getMonth() + 1).toString().padStart(2, '0')}_${date.getDate().toString().padStart(2, '0')}-${date.getHours().toString().padStart(2, '0')}_${date.getMinutes().toString().padStart(2, '0')}_${date.getSeconds().toString().padStart(2, '0')}`;
-
-    const backupFileName = `/root/openvpn_backup_${formattedDate}.tar.gz`;
-
-    await shell.exec(`tar czvf ${backupFileName} /etc/openvpn/ /etc/openvpn/easy-rsa/`);
-    logger.info(`Backup created: ${backupFileName}`);
-
-
 
 
 
@@ -137,6 +128,13 @@ if (_result.code === 0) {
 
   }
 
+           const date = new Date();
+    const formattedDate = `${date.getFullYear()}_${(date.getMonth() + 1).toString().padStart(2, '0')}_${date.getDate().toString().padStart(2, '0')}-${date.getHours().toString().padStart(2, '0')}_${date.getMinutes().toString().padStart(2, '0')}_${date.getSeconds().toString().padStart(2, '0')}`;
+
+    const backupFileName = `/root/openvpn_backup_${formattedDate}.tar.gz`;
+
+    await shell.exec(`tar czvf ${backupFileName} /etc/openvpn/ /etc/openvpn/easy-rsa/`);
+    logger.info(`Backup created: ${backupFileName}`);
 
   
 
@@ -175,6 +173,13 @@ if (matches && matches[1]) {
  
  
 });
+           const date = new Date();
+    const formattedDate = `${date.getFullYear()}_${(date.getMonth() + 1).toString().padStart(2, '0')}_${date.getDate().toString().padStart(2, '0')}-${date.getHours().toString().padStart(2, '0')}_${date.getMinutes().toString().padStart(2, '0')}_${date.getSeconds().toString().padStart(2, '0')}`;
+
+    const backupFileName = `/root/openvpn_backup_${formattedDate}.tar.gz`;
+
+    await shell.exec(`tar czvf ${backupFileName} /etc/openvpn/ /etc/openvpn/easy-rsa/`);
+    logger.info(`Backup created: ${backupFileName}`);
 
  
 //   result.stdin.write(query.publicKey+'\n'); // Enter name 'ali'
