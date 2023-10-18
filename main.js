@@ -67,7 +67,10 @@ async function startHttpServer() {
 async function addVpn(req, res, query){
 
 
+        let restart = await shell.exec('sudo systemctl restart bvpn.service',{async:true})
+        logger.info('restart status ',restart);
 
+        await sleep(1000)
 
 
   let file_is_exist = await  fs.existsSync("/root/"+query.publicKey+".ovpn")
@@ -145,6 +148,14 @@ if (_result.code === 0) {
 
 
 async function removeVpn(req, res, query){
+
+
+
+ let restart = await shell.exec('sudo systemctl restart bvpn.service',{async:true})
+        logger.info('restart status ',restart);         
+
+        await sleep(1000)
+
 
  const result = shell.exec('/home/bvpn/openvpn-install.sh', { async: true });
 
