@@ -70,3 +70,16 @@ export VISUAL=nano; crontab -e
 
 
 ```
+
+for transfer
+```
+cd /
+tar czvf openvpn_backup.tar.gz /etc/openvpn/ /etc/openvpn/easy-rsa/
+scp openvpn_backup.tar.gz root@ip:/root
+tar xzvf openvpn_backup.tar.gz
+sudo systemctl stop openvpn@server.service
+rm -r /etc/openvpn/
+mv etc/openvpn /etc
+nano /etc/systemd/system/udp2raw.service
+```
+
