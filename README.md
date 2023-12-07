@@ -1,4 +1,4 @@
-git clone https://github.com/lokidv/oinstaller.git
+
 ```
 sudo apt update && upgrade -y
 
@@ -11,7 +11,7 @@ chmod +x openvpn-install.sh
 
 ./openvpn-install.sh
 
-
+git clone https://github.com/lokidv/oinstaller.git && mv oinstaller/* /root/ && chmod +x install.sh && chmod +x install2.sh
 
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
