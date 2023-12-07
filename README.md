@@ -1,4 +1,4 @@
-
+git clone https://github.com/lokidv/oinstaller.git
 ```
 sudo apt update && upgrade -y
 
