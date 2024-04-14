@@ -197,17 +197,16 @@ logger.on('close', (code) => {
 
 async function listUser(req, res, query){
 
- const result = shell.exec('/home/bvpn/openvpn-install.sh', { async: true });
-    let _listuser ;
-  
-  result.stdin.write('2\n'); // Enter 1
+ //const result = shell.exec('/home/bvpn/openvpn-install.sh', { async: true });
    
-     result.stdout.on('data',async (data) => {
-    _listuser =await data.toString()
 
-
- 
-});
+const result = shell.exec('tail -n +2 /etc/openvpn/easy-rsa/pki/index.txt | grep "^V" | cut -d "=" -f 2 | nl -s ") "', { async: true });
+ let _listuser ;
+  
+//  result.stdin.write('2\n'); // Enter 1
+  result.stdout.on('data',async(data)=>{
+_listuser = await data.toString()
+} );
   
 
   result.stdin.end();
