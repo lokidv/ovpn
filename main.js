@@ -69,12 +69,19 @@ async function startHttpServer() {
 }
 
 async function checkToken(req,res,query){
-    // res.write('hello');
-    let file_is_exist = await  fs.existsSync("/root/"+query.publicKey+".ovpn")
-    if (file_is_exist){
-        await res.write('true')
-    }else{
-        await res.write('false')
+    try {
+        let name = query.publicKey;
+        const { stdout, stderr, code } = await shell.exec(`tail -n +2 /etc/openvpn/easy-rsa/pki/index.txt | grep "^V" | cut -d "=" -f 2 | nl -s ") " | grep ${name}`, { silent: true });
+        if (stdout.trim() !== '') {
+            const startIndex = stdout.indexOf(') ') + 2;
+            const configName = stdout.substring(startIndex).trim();
+            res.write('true')
+        } else {
+            res.write('false')
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Internal Server Error');
     }
 }
 async function addVpn(req, res, query){
