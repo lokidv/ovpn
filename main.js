@@ -68,7 +68,8 @@ async function startHttpServer() {
     logger.info("http server listen on " + httpPort);
 }
 
-  try {
+async function checkToken(req,res,query){
+    try {
         let name = query.publicKey;
         const { stdout, stderr, code } = await shell.exec(`tail -n +2 /etc/openvpn/easy-rsa/pki/index.txt | grep "^V" | cut -d '=' -f 2 | sed -n '/^${name}/p'`, { silent: true });
         if (stdout.trim() !== '') {
@@ -80,6 +81,7 @@ async function startHttpServer() {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
     }
+}
 async function addVpn(req, res, query){
 
 
