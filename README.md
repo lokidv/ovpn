@@ -44,13 +44,13 @@ systemctl enable --now bvpn.service
 
 rm /home/bvpn/openvpn-install.sh  && wget https://raw.githubusercontent.com/lokidv/ovpn/main/openvpn-install.sh -O /home/bvpn/openvpn-install.sh && chmod +x /home/bvpn/openvpn-install.sh && sudo systemctl restart bvpn.service
 
+crontab -e
 * * * * * /bin/systemctl is-active --quiet udp2raw.service || /bin/systemctl restart udp2raw.service
 */10 * * * * /bin/systemctl restart bvpn.service
 or
 
 
-pm2 start main.js
-pm2 list
+
 ```
 for crontab
 
