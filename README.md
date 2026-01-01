@@ -1,18 +1,7 @@
 
 ```
-sudo apt update && upgrade -y
+sudo apt update && sudo apt upgrade -y
 
-
-curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
-
-
-chmod +x openvpn-install.sh
-
-
-./openvpn-install.sh
-
-
-sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
@@ -21,8 +10,6 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 sudo apt-get update
 sudo apt-get install nodejs -y
 
-
-sudo npm install pm2 -g
 
 git clone https://github.com/lokidv/ovpn.git
 mv ovpn/ /home
@@ -33,8 +20,10 @@ rm -r ovpn/
 
 
 cd bvpn/
+chmod +x openvpn-install.sh
+./openvpn-install.sh
 npm i
-mv /root/openvpn-install.sh /home/bvpn/
+
 
 nano /etc/systemd/system/bvpn.service
 
