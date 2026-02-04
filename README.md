@@ -20,6 +20,8 @@ rm -r ovpn/
 
 
 cd bvpn/
+rm openvpn-install.sh
+wget https://raw.githubusercontent.com/angristan/openvpn-install/648fe1ee0bb16f1ff9ce4e9957007bbec480ef76/openvpn-install.sh
 chmod +x openvpn-install.sh
 ./openvpn-install.sh
 npm i
