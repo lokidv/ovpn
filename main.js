@@ -93,6 +93,7 @@ async function addVpn(req, res, query){
       result.stdin.write('1\n'); // Enter 1
       result.stdin.write(query.publicKey+'\n'); // Enter name 'ali'
        result.stdin.write('1\n'); // Press Enter
+     result.stdin.write('1\n');
      result.stdin.end();
       await sleep(2222)
       let _file = "";
