@@ -55,7 +55,6 @@ mssfix 1340
 
 systemctl restart openvpn
 
-rm /home/bvpn/openvpn-install.sh  && wget https://raw.githubusercontent.com/lokidv/ovpn/main/openvpn-install.sh -O /home/bvpn/openvpn-install.sh && chmod +x /home/bvpn/openvpn-install.sh && sudo systemctl restart bvpn.service
 
 crontab -e
 * * * * * /bin/systemctl is-active --quiet udp2raw.service || /bin/systemctl restart udp2raw.service
